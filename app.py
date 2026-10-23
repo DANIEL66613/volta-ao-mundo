@@ -1,10 +1,14 @@
 import random
 import unicodedata
+import os
 
 from flask import Flask, render_template_string, request, session
 
 app = Flask(__name__)
-app.secret_key = "volta-ao-mundo-teste-local"
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "volta-ao-mundo-teste-local"
+)
 
 
 def normalizar(texto):
